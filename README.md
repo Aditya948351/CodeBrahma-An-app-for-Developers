@@ -129,3 +129,13 @@ Submit!
 🎯 Daily Coding Challenges – Bite-sized tasks to stay consistent
 
 📱 Home Screen Widgets – Quick access to streaks or goals
+
+---
+
+## 🧭 Architecture Diagram
+
+The following flowchart shows the high-level screens and navigation for the CodeBrahma app. This was added to satisfy issue #15 (flowchart or KANBAN board).
+
+![Flowchart](docs/flowchart.svg)
+
+You can also find a lightweight Kanban template in `docs/kanban-board.md`.
