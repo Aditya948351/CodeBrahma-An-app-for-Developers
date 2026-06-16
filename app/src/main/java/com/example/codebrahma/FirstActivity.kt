@@ -152,22 +152,22 @@ fun LearnNavBotSheet() {
                 val navBackStackEntry by navigationcontroller.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
 
+                // --- Productivity ---
                 NavigationDrawerItem(
-                    label = { Text(text = "Home", color = Color.Black) },
-                    selected = currentRoute == Screens.Home.screen,
+                    label = { Text(text = "Manage Tasks and Reminders", color = Color.Black) },
+                    selected = currentRoute == Screens.TaskandReminderManager.screen,
                     icon = {
                         Icon(
-                            Icons.Default.Home,
-                            contentDescription = "Home",
-                            tint = Color.Magenta
+                            painter = painterResource(id = R.drawable.task_rem_manager),
+                            contentDescription = "Tasks",
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Unspecified
                         )
                     },
                     onClick = {
                         coroutineScope.launch { drawerState.close() }
-                        navigationcontroller.navigate(Screens.Home.screen) {
-                            popUpTo(Screens.Home.screen) {
-                                inclusive = false
-                            }
+                        navigationcontroller.navigate(Screens.TaskandReminderManager.screen) {
+                            popUpTo(Screens.TaskandReminderManager.screen) { inclusive = false }
                         }
                     }
                 )
@@ -191,6 +191,28 @@ fun LearnNavBotSheet() {
                     }
                 )
 
+                NavigationDrawerItem(
+                    label = { Text(text = "Bookmarks", color = Color.Black) },
+                    selected = currentRoute == Screens.Bookmarks.screen,
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.bookmarks),
+                            contentDescription = "Bookmarks",
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Unspecified
+                        )
+                    },
+                    onClick = {
+                        coroutineScope.launch { drawerState.close() }
+                        navigationcontroller.navigate(Screens.Bookmarks.screen) {
+                            popUpTo(Screens.Bookmarks.screen) { inclusive = false }
+                        }
+                    }
+                )
+
+                Divider()
+
+                // --- Learning ---
                 NavigationDrawerItem(
                     label = { Text(text = "Roadmap Generator", color = Color.Black) },
                     selected = currentRoute == Screens.AiLearningPaths.screen,
@@ -227,6 +249,10 @@ fun LearnNavBotSheet() {
                         }
                     }
                 )
+
+                Divider()
+
+                // --- Tools ---
                 NavigationDrawerItem(
                     label = { Text(text = "Run and Debug Code", color = Color.Black) },
                     selected = currentRoute == Screens.CodeOptimizationandDebugging.screen,
@@ -245,43 +271,6 @@ fun LearnNavBotSheet() {
                         }
                     }
                 )
-                NavigationDrawerItem(
-                    label = { Text(text = "Manage Tasks and Reminders", color = Color.Black) },
-                    selected = currentRoute == Screens.TaskandReminderManager.screen,
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.task_rem_manager),
-                            contentDescription = "AI Learning Paths",
-                            modifier = Modifier.size(24.dp),
-                            tint = Color.Unspecified
-                        )
-                    },
-                    onClick = {
-                        coroutineScope.launch { drawerState.close() }
-                        navigationcontroller.navigate(Screens.TaskandReminderManager.screen) {
-                            popUpTo(Screens.TaskandReminderManager.screen) { inclusive = false }
-                        }
-                    }
-                )
-
-                NavigationDrawerItem(
-                    label = { Text(text = "Web Scrapping Insights", color = Color.Black) },
-                    selected = currentRoute == Screens.WebScrapperInsights.screen,
-                    icon = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.web_scrapper),
-                            contentDescription = "Random Resources AI Fetches",
-                            modifier = Modifier.size(24.dp),
-                            tint = Color.Unspecified
-                        )
-                    },
-                    onClick = {
-                        coroutineScope.launch { drawerState.close() }
-                        navigationcontroller.navigate(Screens.WebScrapperInsights.screen) {
-                            popUpTo(Screens.WebScrapperInsights.screen) { inclusive = false }
-                        }
-                    }
-                )
 
                 NavigationDrawerItem(
                     label = { Text(text = "Voice Command Debugging", color = Color.Black) },
@@ -289,7 +278,7 @@ fun LearnNavBotSheet() {
                     icon = {
                         Icon(
                             painter = painterResource(id = R.drawable.voicecommand),
-                            contentDescription = "Random Resources AI Fetches",
+                            contentDescription = "Voice Command Debugging",
                             modifier = Modifier.size(24.dp),
                             tint = Color.Unspecified
                         )
@@ -303,12 +292,31 @@ fun LearnNavBotSheet() {
                 )
 
                 NavigationDrawerItem(
+                    label = { Text(text = "Web Scrapping Insights", color = Color.Black) },
+                    selected = currentRoute == Screens.WebScrapperInsights.screen,
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.web_scrapper),
+                            contentDescription = "Web Scraper",
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Unspecified
+                        )
+                    },
+                    onClick = {
+                        coroutineScope.launch { drawerState.close() }
+                        navigationcontroller.navigate(Screens.WebScrapperInsights.screen) {
+                            popUpTo(Screens.WebScrapperInsights.screen) { inclusive = false }
+                        }
+                    }
+                )
+
+                NavigationDrawerItem(
                     label = { Text(text = "Offline Mode AI", color = Color.Black) },
                     selected = currentRoute == Screens.OfflineMode.screen,
                     icon = {
                         Icon(
                             painter = painterResource(id = R.drawable.offline_mode),
-                            contentDescription = "Offline Mode AI functionality",
+                            contentDescription = "Offline Mode AI",
                             modifier = Modifier.size(24.dp),
                             tint = Color.Unspecified
                         )
@@ -317,6 +325,28 @@ fun LearnNavBotSheet() {
                         coroutineScope.launch { drawerState.close() }
                         navigationcontroller.navigate(Screens.OfflineMode.screen) {
                             popUpTo(Screens.OfflineMode.screen) { inclusive = false }
+                        }
+                    }
+                )
+
+                Divider()
+
+                // --- App ---
+                NavigationDrawerItem(
+                    label = { Text(text = "Settings", color = Color.Black) },
+                    selected = currentRoute == Screens.Settings.screen,
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.settings),
+                            contentDescription = "Settings",
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Unspecified
+                        )
+                    },
+                    onClick = {
+                        coroutineScope.launch { drawerState.close() }
+                        navigationcontroller.navigate(Screens.Settings.screen) {
+                            popUpTo(Screens.Settings.screen) { inclusive = false }
                         }
                     }
                 )
@@ -339,24 +369,7 @@ fun LearnNavBotSheet() {
                             }
                         },
                         actions = {
-                            val selected = remember { mutableStateOf("") }
                             val context = LocalContext.current
-                            IconButton(
-                                onClick = {
-                                    selected.value = Screens.Settings.screen
-                                    navigationcontroller.navigate(Screens.Settings.screen) {
-                                        popUpTo(Screens.Profile.screen) { inclusive = true }
-                                    }
-                                },
-                                modifier = Modifier.fillMaxSize(0.2f)
-                            ) {
-                                Icon(
-                                    painter = painterResource(id = R.drawable.settings),
-                                    contentDescription = "Learning Progress Screen",
-                                    modifier = Modifier.size(26.dp),
-                                    tint = if (selected.value == Screens.Settings.screen) Color.Unspecified else Color.Unspecified
-                                )
-                            }
                             IconButton(onClick = { MyNotification(context, "FCM", "Wake up! With Great Knowledge comes Increased Development")
                                 .FirNotification() }) {
                                 Icon(Icons.Default.Favorite, contentDescription = "Favorite")
@@ -366,101 +379,102 @@ fun LearnNavBotSheet() {
                 }
             },
             bottomBar = {
-                BottomAppBar(containerColor = Color(0xFF2196F3)) {
-                    val selected = remember { mutableStateOf(Screens.AutoWriteCode.screen) } // Store screen route as a string
+                val navBackStackEntry by navigationcontroller.currentBackStackEntryAsState()
+                val currentRoute = navBackStackEntry?.destination?.route
 
-                    IconButton(
-                        onClick = {
-                            selected.value = Screens.AutoWriteCode.screen
-                            navigationcontroller.navigate(Screens.AutoWriteCode.screen) {
-                                popUpTo(Screens.AutoWriteCode.screen) { inclusive = true }
-                            }
-                        },
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.auto_write_code),
-                            contentDescription = "Write Code",
-                            modifier = Modifier.size(26.dp),
-                            tint = if (selected.value == Screens.AutoWriteCode.screen) Color.Blue else Color.Unspecified
-                        )
-                    }
-                    // AI Debugging Assistant
-                    IconButton(
-                        onClick = {
-                            selected.value = Screens.AIDebugAssistant.screen
-                            navigationcontroller.navigate(Screens.AIDebugAssistant.screen) {
-                                popUpTo(Screens.AIDebugAssistant.screen) { inclusive = true }
-                            }
-                        },
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.aibot),
-                            contentDescription = "AI Debugging Assistant",
-                            modifier = Modifier.size(34.dp),
-                            tint = if (selected.value == Screens.AIDebugAssistant.screen) Color.Blue else Color.Unspecified
-                        )
-                    }
-                    // Floating Action Button (FAB remains same)
-                    Box(
-                        modifier = Modifier
-                            .weight(1.2f)
-                            .padding(vertical = 12.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        FloatingActionButton(
+                if (currentRoute != Screens.Profile.screen) {
+                    BottomAppBar(containerColor = Color(0xFF2196F3)) {
+                        // 1. Home
+                        IconButton(
                             onClick = {
-                                navigationcontroller.navigate(Screens.ScanCode.screen) {
-                                    popUpTo(Screens.ScanCode.screen) { inclusive = true }
+                                navigationcontroller.navigate(Screens.Home.screen) {
+                                    popUpTo(Screens.Home.screen) { inclusive = true }
                                 }
                             },
-                            containerColor = Color(0xFFF44336)
+                            modifier = Modifier.weight(1f)
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.qrcode),
-                                contentDescription = "AI Debugging Assistant",
-                                modifier = Modifier.size(34.dp),
-                                tint = if (selected.value == Screens.ScanCode.screen) Color.Blue else Color.Unspecified
+                                Icons.Default.Home,
+                                contentDescription = "Home",
+                                modifier = Modifier.size(26.dp),
+                                tint = if (currentRoute == Screens.Home.screen) Color.White else Color.Black
                             )
                         }
-                    }
 
+                        // 2. Auto Write Code
+                        IconButton(
+                            onClick = {
+                                navigationcontroller.navigate(Screens.AutoWriteCode.screen) {
+                                    popUpTo(Screens.AutoWriteCode.screen) { inclusive = true }
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.auto_write_code),
+                                contentDescription = "Write Code",
+                                modifier = Modifier.size(26.dp),
+                                tint = if (currentRoute == Screens.AutoWriteCode.screen) Color.White else Color.Black
+                            )
+                        }
 
-
-                    // Bookmarks
-                    IconButton(
-                        onClick = {
-                            selected.value = Screens.Bookmarks.screen
-                            navigationcontroller.navigate(Screens.Bookmarks.screen) {
-                                popUpTo(Screens.Bookmarks.screen) { inclusive = true }
+                        // 3. FAB (Scan Code)
+                        Box(
+                            modifier = Modifier
+                                .weight(1.2f)
+                                .padding(vertical = 12.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            FloatingActionButton(
+                                onClick = {
+                                    navigationcontroller.navigate(Screens.ScanCode.screen) {
+                                        popUpTo(Screens.ScanCode.screen) { inclusive = true }
+                                    }
+                                },
+                                containerColor = Color(0xFFF44336)
+                            ) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.qrcode),
+                                    contentDescription = "Scan Code",
+                                    modifier = Modifier.size(34.dp),
+                                    tint = Color.White
+                                )
                             }
-                        },
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.bookmarks),
-                            contentDescription = "Reminders",
-                            modifier = Modifier.size(26.dp),
-                            tint = if (selected.value == Screens.Bookmarks.screen) Color.Blue else Color.Unspecified
-                        )
-                    }
-                    // Learning Progress
-                    IconButton(
-                        onClick = {
-                            selected.value = Screens.Profile.screen
-                            navigationcontroller.navigate(Screens.Profile.screen) {
-                                popUpTo(Screens.Profile.screen) { inclusive = true }
-                            }
-                        },
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.profile),
-                            contentDescription = "Learning Progress Screen",
-                            modifier = Modifier.size(26.dp),
-                            tint = if (selected.value == Screens.Profile.screen) Color.Blue else Color.Unspecified
-                        )
+                        }
+
+                        // 4. AI Debug Assistant
+                        IconButton(
+                            onClick = {
+                                navigationcontroller.navigate(Screens.AIDebugAssistant.screen) {
+                                    popUpTo(Screens.AIDebugAssistant.screen) { inclusive = true }
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.aibot),
+                                contentDescription = "AI Debugging Assistant",
+                                modifier = Modifier.size(34.dp),
+                                tint = if (currentRoute == Screens.AIDebugAssistant.screen) Color.White else Color.Black
+                            )
+                        }
+
+                        // 5. Profile
+                        IconButton(
+                            onClick = {
+                                navigationcontroller.navigate(Screens.Profile.screen) {
+                                    popUpTo(Screens.Profile.screen) { inclusive = true }
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.profile),
+                                contentDescription = "Profile",
+                                modifier = Modifier.size(26.dp),
+                                tint = if (currentRoute == Screens.Profile.screen) Color.White else Color.Black
+                            )
+                        }
                     }
                 }
             }
